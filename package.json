@@ -70,5 +70,6 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "prettier": "^1.19.1"
   },
-  "proxy": "http://localhost"
+  "proxy": "http://localhost",
+  "homepage": "/demo/CRM-demo"
 }

@@ -12,4 +12,4 @@ ncftpput -R -v -m \
   -Y "rm -rf $CRM_DEMO_DIR" \
   $PUREUDON_FTP_HOST \
   $CRM_DEMO_DIR \
-  $PWD/build
+  $PWD/build/*
