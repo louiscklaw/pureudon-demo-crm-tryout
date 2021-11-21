@@ -70,6 +70,5 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "prettier": "^1.19.1"
   },
-  "homepage": "https://pureudon.com/demo/CRM-demo",
   "proxy": "http://localhost"
 }

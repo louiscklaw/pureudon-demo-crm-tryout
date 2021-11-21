@@ -16,7 +16,8 @@ import { useFormik } from 'formik';
 
 import putData from '../../../api/datatypes/put';
 
-import { DATATYPES_ENDPOINT } from './config';
+import get_datatype from 'src/api/datatype/get';
+
 import Loading from './Loading';
 import { useTranslation } from 'react-i18next';
 
@@ -46,7 +47,7 @@ export default ({ open, setOpen, id_to_edit }) => {
 
   React.useEffect(() => {
     setIsLoading(true);
-    fetch(`${DATATYPES_ENDPOINT}/${id_to_edit}`)
+    get_datatype(id_to_edit)
       .then((res) => res.json())
       .then((res_json) => setEditContent(res_json.data))
       .then(() => setIsLoading(false))
@@ -60,7 +61,7 @@ export default ({ open, setOpen, id_to_edit }) => {
     //   username: Yup.string().required(),
     // }),
     onSubmit: (values) => {
-      putData(`${DATATYPES_ENDPOINT}/${id_to_edit}`, formik.values)
+      putData(values)
         .then(() => setOpen(false))
         .catch((err) => console.error('err', err.message));
     },

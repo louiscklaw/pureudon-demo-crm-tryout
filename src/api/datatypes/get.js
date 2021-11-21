@@ -1,5 +1,5 @@
-import { API_ENDPOINT_BASE } from 'src/views/datatypes/DatatypesView/config';
+import { DATATYPES_ENDPOINT } from '../config';
 
 export default () => {
-  return fetch(`${API_ENDPOINT_BASE}/datatypes`);
+  return fetch(DATATYPES_ENDPOINT);
 };

@@ -4,11 +4,10 @@ import { Dialog, Button, DialogTitle, DialogActions, DialogContent, DialogConten
 
 import { useSnackbar } from 'notistack';
 
-import { DATATYPES_ENDPOINT } from './config';
-
 import useStyles from './styles';
 import { useTranslation } from 'react-i18next';
 import ShowDebug from 'src/components/ShowDebug';
+import delete_datatypes from 'src/api/datatypes/delete';
 
 export default ({ open, setOpen, id_to_delete, refreshData, setSnackbarOpen }) => {
   const classes = useStyles();
@@ -17,7 +16,7 @@ export default ({ open, setOpen, id_to_delete, refreshData, setSnackbarOpen }) =
   const notifyDeleteComplete = () => enqueueSnackbar(t('delete complete'), { variant: 'success' });
 
   const onConfirmDeleteClick = (id_to_delete) => {
-    fetch(`${DATATYPES_ENDPOINT}/${id_to_delete}`, { method: 'DELETE' })
+    delete_datatypes(id_to_delete)
       .then(() => notifyDeleteComplete())
       .then(() => refreshData())
       .then(() => setOpen(false))

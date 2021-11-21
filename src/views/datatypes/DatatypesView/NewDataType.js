@@ -14,7 +14,6 @@ import ShowDebug from 'src/components/ShowDebug';
 import { useFormik } from 'formik';
 import { useSnackbar } from 'notistack';
 
-import { DATATYPES_ENDPOINT } from './config';
 import postData from '../../../api/datatypes/post';
 
 import useStyles from './styles';
@@ -39,7 +38,7 @@ export default ({ open, setOpen, refreshData }) => {
     },
     // validationSchema: Yup.object({ }),
     onSubmit: (values) => {
-      postData(`${DATATYPES_ENDPOINT}`, values)
+      postData(values)
         .then(() => notifyAddComplete())
         .then(() => refreshData())
         .then(() => setOpen(false))

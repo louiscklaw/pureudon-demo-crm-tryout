@@ -1,5 +1,7 @@
-export default (url = '', data = {}) => {
-  return fetch(url, {
+import { DATATYPES_ENDPOINT } from '../config';
+
+export default (data) => {
+  return fetch(DATATYPES_ENDPOINT, {
     method: 'PUT',
     mode: 'cors',
     cache: 'no-cache',

@@ -20,7 +20,6 @@ import {
 
 import EditDatatype from './EditDataType';
 
-import { API_ENDPOINT_BASE } from './config';
 import ConfirmDeleteDialog from './ConfirmDeleteDialog';
 import { useTranslation } from 'react-i18next';
 

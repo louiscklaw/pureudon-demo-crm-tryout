@@ -1,6 +1,8 @@
-export default (url = '', data = {}) => {
+import { DATATYPES_ENDPOINT } from '../config';
+
+export default (data) => {
   console.log('post.js', 'data', data);
-  return fetch(url, {
+  return fetch(DATATYPES_ENDPOINT, {
     method: 'POST',
     mode: 'cors',
     cache: 'no-cache',
