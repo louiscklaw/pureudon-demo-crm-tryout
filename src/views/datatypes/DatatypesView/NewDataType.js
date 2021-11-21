@@ -18,13 +18,15 @@ import { DATATYPES_ENDPOINT } from './config';
 import postData from '../../../api/datatypes/post';
 
 import useStyles from './styles';
+import { useTranslation } from 'react-i18next';
 
 export default ({ open, setOpen, refreshData }) => {
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
+  const { t } = useTranslation();
 
-  const notifyAddComplete = () => enqueueSnackbar('add datatypes complete', { variant: 'success' });
-  const notifyAddDatatypeError = () => enqueueSnackbar('add datatypes error', { variant: 'error' });
+  const notifyAddComplete = () => enqueueSnackbar(t('add datatypes complete'), { variant: 'success' });
+  const notifyAddDatatypeError = () => enqueueSnackbar(t('add datatypes error'), { variant: 'error' });
 
   let formik = useFormik({
     enableReinitialize: true,
@@ -54,7 +56,7 @@ export default ({ open, setOpen, refreshData }) => {
     <>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <form onSubmit={formik.handleSubmit}>
-          <DialogTitle id="form-dialog-title">New datatype dialog</DialogTitle>
+          <DialogTitle id="form-dialog-title">{t('Create datatype')}</DialogTitle>
 
           <ShowDebug>
             <button type="button" onClick={(e) => notifyAddDatatypeError('hello error')}>
@@ -63,7 +65,7 @@ export default ({ open, setOpen, refreshData }) => {
           </ShowDebug>
 
           <DialogContent>
-            <DialogContentText className={classes.test}>Basic</DialogContentText>
+            <DialogContentText>Basic</DialogContentText>
             <TextField
               autoFocus
               margin="dense"
@@ -74,7 +76,6 @@ export default ({ open, setOpen, refreshData }) => {
               fullWidth
             />
             <TextField
-              autoFocus
               margin="dense"
               id="inttype"
               label="inttype"
@@ -85,9 +86,8 @@ export default ({ open, setOpen, refreshData }) => {
           </DialogContent>
 
           <DialogContent>
-            <DialogContentText className={classes.test}>Date</DialogContentText>
+            <DialogContentText>Date</DialogContentText>
             <TextField
-              autoFocus
               margin="dense"
               id="yeartype"
               label="yeartype"
@@ -96,7 +96,6 @@ export default ({ open, setOpen, refreshData }) => {
               fullWidth
             />
             <TextField
-              autoFocus
               margin="dense"
               id="datetype"
               label="datetype"
@@ -105,7 +104,6 @@ export default ({ open, setOpen, refreshData }) => {
               fullWidth
             />
             <TextField
-              autoFocus
               margin="dense"
               id="datetimetype"
               label="datetimetype"
@@ -117,10 +115,10 @@ export default ({ open, setOpen, refreshData }) => {
 
           <DialogActions>
             <Button type="reset" onClick={handleClose} color="primary">
-              Cancel
+              {t('cancel')}
             </Button>
-            <Button type="submit" color="primary">
-              Submit
+            <Button type="submit" color="primary" variant="contained">
+              {t('submit')}
             </Button>
           </DialogActions>
 

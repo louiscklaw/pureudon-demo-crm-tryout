@@ -7,12 +7,14 @@ import { useSnackbar } from 'notistack';
 import { DATATYPES_ENDPOINT } from './config';
 
 import useStyles from './styles';
+import { useTranslation } from 'react-i18next';
+import ShowDebug from 'src/components/ShowDebug';
 
 export default ({ open, setOpen, id_to_delete, refreshData, setSnackbarOpen }) => {
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
 
-  const notifyDeleteComplete = () => enqueueSnackbar('delete complete', { variant: 'success' });
+  const notifyDeleteComplete = () => enqueueSnackbar(t('delete complete'), { variant: 'success' });
 
   const onConfirmDeleteClick = (id_to_delete) => {
     fetch(`${DATATYPES_ENDPOINT}/${id_to_delete}`, { method: 'DELETE' })
@@ -24,21 +26,21 @@ export default ({ open, setOpen, id_to_delete, refreshData, setSnackbarOpen }) =
 
   const handleClose = () => setOpen(false);
 
+  const { t } = useTranslation();
+
   return (
     <>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">helloworld dialog</DialogTitle>
-
-        <DialogContent>
-          <DialogContentText className={classes.test}>are you sure delete datatypes {id_to_delete}</DialogContentText>
-        </DialogContent>
+        <DialogTitle id="form-dialog-title">
+          {t('are you sure delete datatypes')} <ShowDebug>{id_to_delete}</ShowDebug>
+        </DialogTitle>
 
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            Cancel
+            {t('cancel')}
           </Button>
-          <Button onClick={(e) => onConfirmDeleteClick(id_to_delete)} color="primary">
-            confirm
+          <Button onClick={(e) => onConfirmDeleteClick(id_to_delete)} color="primary" variant="contained">
+            {t('confirm')}
           </Button>
         </DialogActions>
       </Dialog>

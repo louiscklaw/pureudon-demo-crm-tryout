@@ -13,14 +13,13 @@ const useStyles = makeStyles((theme) => ({
   exportButton: { marginRight: theme.spacing(1) },
 }));
 
-const Toolbar = ({ className, refreshData, ...rest }) => {
+const Toolbar = ({ setFilterInput, className, refreshData, ...rest }) => {
   const classes = useStyles();
   let [open_new_datatype, setOpenNewDatatype] = React.useState(false);
 
   const { t } = useTranslation();
 
   const onAddNewClick = () => {
-    // alert('add new click');
     setOpenNewDatatype(true);
   };
 
@@ -29,8 +28,8 @@ const Toolbar = ({ className, refreshData, ...rest }) => {
       <NewDataType open={open_new_datatype} setOpen={setOpenNewDatatype} refreshData={refreshData} />
       <div className={clsx(classes.root, className)} {...rest}>
         <Box display="flex" justifyContent="flex-end">
-          <Button className={classes.importButton}>Import</Button>
-          <Button className={classes.exportButton}>Export</Button>
+          <Button className={classes.importButton}>{t('import')}</Button>
+          <Button className={classes.exportButton}>{t('export')}</Button>
           <Button color="primary" variant="contained" onClick={onAddNewClick}>
             {t('add_datatype')}
           </Button>
@@ -50,8 +49,9 @@ const Toolbar = ({ className, refreshData, ...rest }) => {
                       </InputAdornment>
                     ),
                   }}
-                  placeholder="Search customer"
+                  placeholder={`${t('search')}  datatypes`}
                   variant="outlined"
+                  onChange={(e) => setFilterInput(e.target.value)}
                 />
               </Box>
             </CardContent>

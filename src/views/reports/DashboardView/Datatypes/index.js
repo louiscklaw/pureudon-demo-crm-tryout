@@ -9,17 +9,30 @@ import useStyles from './styles';
 import get from 'src/api/datatypes/get';
 import { useTranslation } from 'react-i18next';
 
+import Loading from './Loading';
+
 const Budget = ({ className, ...rest }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
   let [datatypes_length, setDatatypesLength] = React.useState(0);
+  let [is_loading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
     get()
       .then((res) => res.json())
-      .then((res_json) => setDatatypesLength(res_json.data.length));
+      .then((res_json) => setDatatypesLength(res_json.data.length))
+      .then(() => setIsLoading(false));
   }, []);
+
+  if (is_loading)
+    return (
+      <Card className={clsx(classes.root, className)} {...rest}>
+        <CardContent style={{ height: '100%' }}>
+          <Loading />
+        </CardContent>
+      </Card>
+    );
 
   return (
     <Card className={clsx(classes.root, className)} {...rest}>

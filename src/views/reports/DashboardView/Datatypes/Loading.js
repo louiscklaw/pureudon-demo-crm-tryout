@@ -12,8 +12,8 @@ export default () => {
     <>
       <div
         style={{
-          height: '300px',
-          width: '300px',
+          height: '100%',
+          width: '100%',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -22,8 +22,8 @@ export default () => {
           <div>
             <BeatLoader color={theme.palette.primary.main} loading={true} size={15} />
           </div>
-          <div style={{ marginTop: '5rem' }}>
-            <Typography variant={'h6'}>{t('loading')}</Typography>
+          <div style={{ marginTop: '1rem' }}>
+            <Typography variant={'p'}>{t('loading')}</Typography>
           </div>
         </div>
       </div>

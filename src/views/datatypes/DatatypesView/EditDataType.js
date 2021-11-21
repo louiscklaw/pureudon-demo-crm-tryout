@@ -18,6 +18,7 @@ import putData from '../../../api/datatypes/put';
 
 import { DATATYPES_ENDPOINT } from './config';
 import Loading from './Loading';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -38,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default ({ open, setOpen, id_to_edit }) => {
+  const { t } = useTranslation();
   let [is_loading, setIsLoading] = React.useState(true);
   let [edit_content, setEditContent] = React.useState({});
   const classes = useStyles();
@@ -130,10 +132,10 @@ export default ({ open, setOpen, id_to_edit }) => {
 
         <DialogActions>
           <Button type="reset" onClick={handleClose} color="primary">
-            Cancel
+            {t('cancel')}
           </Button>
-          <Button type="submit" color="primary">
-            Submit
+          <Button type="submit" color="primary" variant="contained">
+            {t('submit')}
           </Button>
         </DialogActions>
 

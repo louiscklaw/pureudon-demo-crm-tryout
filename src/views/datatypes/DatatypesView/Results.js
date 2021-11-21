@@ -22,14 +22,16 @@ import EditDatatype from './EditDataType';
 
 import { API_ENDPOINT_BASE } from './config';
 import ConfirmDeleteDialog from './ConfirmDeleteDialog';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
   avatar: { marginRight: theme.spacing(2) },
 }));
 
-const Results = ({ className, customers, is_loading, is_updating, refreshData, ...rest }) => {
+const Results = ({ filter_input, className, customers, is_loading, is_updating, refreshData, ...rest }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
@@ -131,27 +133,30 @@ const Results = ({ className, customers, is_loading, is_updating, refreshData, .
                 </TableRow>
               </TableHead>
               <TableBody>
-                {customers?.slice(0, limit).map((customer) => (
-                  <TableRow hover key={customer.id} selected={selectedCustomerIds.indexOf(customer.id) !== -1}>
-                    <TableCell padding="checkbox">
-                      <Checkbox
-                        checked={selectedCustomerIds.indexOf(customer.id) !== -1}
-                        onChange={(event) => handleSelectOne(event, customer.id)}
-                        value="true"
-                      />
-                    </TableCell>
-                    <TableCell>{customer.id}</TableCell>
-                    <TableCell>{customer.varchartype}</TableCell>
-                    <TableCell>{customer.inttype}</TableCell>
-                    <TableCell>{customer.yeartype}</TableCell>
-                    <TableCell>{customer.datetype}</TableCell>
-                    <TableCell>{customer.datetimetype}</TableCell>
-                    <TableCell>
-                      <Button onClick={(e) => onEditButtonClick(customer.id)}>edit</Button>
-                      <Button onClick={(e) => onDeleteButtonClick(customer.id)}>delete</Button>
-                    </TableCell>
-                  </TableRow>
-                ))}
+                {customers
+                  ?.filter((customer) => customer.varchartype.search(filter_input) > -1)
+                  .slice(0, limit)
+                  .map((customer) => (
+                    <TableRow hover key={customer.id} selected={selectedCustomerIds.indexOf(customer.id) !== -1}>
+                      <TableCell padding="checkbox">
+                        <Checkbox
+                          checked={selectedCustomerIds.indexOf(customer.id) !== -1}
+                          onChange={(event) => handleSelectOne(event, customer.id)}
+                          value="true"
+                        />
+                      </TableCell>
+                      <TableCell>{customer.id}</TableCell>
+                      <TableCell>{customer.varchartype}</TableCell>
+                      <TableCell>{customer.inttype}</TableCell>
+                      <TableCell>{customer.yeartype}</TableCell>
+                      <TableCell>{customer.datetype}</TableCell>
+                      <TableCell>{customer.datetimetype}</TableCell>
+                      <TableCell>
+                        <Button onClick={(e) => onEditButtonClick(customer.id)}>{t('edit')}</Button>
+                        <Button onClick={(e) => onDeleteButtonClick(customer.id)}>{t('delete')}</Button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
               </TableBody>
             </Table>
           </Box>

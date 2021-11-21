@@ -23,6 +23,7 @@ const CustomerListView = () => {
 
   let [is_loading, setIsLoading] = useState(true);
   let [is_updating, setIsUpdating] = useState(false);
+  let [filter_input, setFilterInput] = useState('');
 
   const refreshData = () => {
     setIsLoading(true);
@@ -38,10 +39,15 @@ const CustomerListView = () => {
   return (
     <Page className={classes.root} title="Customers">
       <Container maxWidth={false}>
-        <Toolbar refreshData={refreshData} />
+        <Toolbar refreshData={refreshData} setFilterInput={setFilterInput} />
         <Box mt={3}>
           <SampleData setData={setSampleData} setIsLoading={setIsLoading} />
-          <Results customers={sample_data} is_loading={is_loading} refreshData={refreshData} />
+          <Results
+            filter_input={filter_input}
+            customers={sample_data}
+            is_loading={is_loading}
+            refreshData={refreshData}
+          />
         </Box>
       </Container>
     </Page>
