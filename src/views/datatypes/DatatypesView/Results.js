@@ -2,7 +2,21 @@ import React, { useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import { Box, Card, Checkbox, Table, TableBody, TableCell, TableHead, TablePagination, TableRow, makeStyles, Button, Modal, Fade } from '@material-ui/core';
+import {
+  Box,
+  Card,
+  Checkbox,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TablePagination,
+  TableRow,
+  makeStyles,
+  Button,
+  Modal,
+  Fade,
+} from '@material-ui/core';
 
 import EditDatatype from './EditDataType';
 
@@ -43,7 +57,10 @@ const Results = ({ className, customers, is_loading, is_updating, refreshData, .
     } else if (selectedIndex === selectedCustomerIds.length - 1) {
       newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds.slice(0, -1));
     } else if (selectedIndex > 0) {
-      newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds.slice(0, selectedIndex), selectedCustomerIds.slice(selectedIndex + 1));
+      newSelectedCustomerIds = newSelectedCustomerIds.concat(
+        selectedCustomerIds.slice(0, selectedIndex),
+        selectedCustomerIds.slice(selectedIndex + 1)
+      );
     }
 
     setSelectedCustomerIds(newSelectedCustomerIds);
@@ -73,10 +90,23 @@ const Results = ({ className, customers, is_loading, is_updating, refreshData, .
     setIdToEdit(id_to_edit);
   };
 
+  let [snackbar_open, setSnackbarOpen] = React.useState(false);
+
   return (
     <>
-      <EditDatatype open={open_edit_modal} setOpen={setOpenEditModal} id_to_edit={id_to_edit} refreshData={refreshData} />
-      <ConfirmDeleteDialog open={open_confirm_delete_dialog} setOpen={setOpenConfirmDeleteDialog} id_to_delete={id_to_delete} refreshData={refreshData} />
+      <EditDatatype
+        open={open_edit_modal}
+        setOpen={setOpenEditModal}
+        id_to_edit={id_to_edit}
+        refreshData={refreshData}
+      />
+      <ConfirmDeleteDialog
+        open={open_confirm_delete_dialog}
+        setOpen={setOpenConfirmDeleteDialog}
+        id_to_delete={id_to_delete}
+        refreshData={refreshData}
+        setSnackbarOpen={setSnackbarOpen}
+      />
       <Card className={clsx(classes.root, className)} {...rest}>
         <PerfectScrollbar>
           <Box minWidth={1050}>

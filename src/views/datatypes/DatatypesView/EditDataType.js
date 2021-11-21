@@ -1,5 +1,14 @@
 import React from 'react';
-import { makeStyles, TextField, Dialog, Button, DialogTitle, DialogActions, DialogContent, DialogContentText } from '@material-ui/core';
+import {
+  makeStyles,
+  TextField,
+  Dialog,
+  Button,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+} from '@material-ui/core';
 
 import ShowDebug from 'src/components/ShowDebug';
 
@@ -33,6 +42,7 @@ export default ({ open, setOpen, id_to_edit }) => {
   const classes = useStyles();
 
   React.useEffect(() => {
+    setIsLoading(true);
     fetch(`${DATATYPES_ENDPOINT}/${id_to_edit}`)
       .then((res) => res.json())
       .then((res_json) => setEditContent(res_json.data))
@@ -47,7 +57,7 @@ export default ({ open, setOpen, id_to_edit }) => {
     //   username: Yup.string().required(),
     // }),
     onSubmit: (values) => {
-      putData(`http://localhost/jobbook-laravel/api/datatypes/${id_to_edit}`, formik.values)
+      putData(`${DATATYPES_ENDPOINT}/${id_to_edit}`, formik.values)
         .then(() => setOpen(false))
         .catch((err) => console.error('err', err.message));
     },
@@ -66,19 +76,56 @@ export default ({ open, setOpen, id_to_edit }) => {
   return (
     <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
       <form onSubmit={formik.handleSubmit}>
-        <DialogTitle id="form-dialog-title">helloworld dialog</DialogTitle>
+        <DialogTitle id="form-dialog-title">
+          helloworld dialog <ShowDebug>{id_to_edit}</ShowDebug>
+        </DialogTitle>
 
         <DialogContent>
           <DialogContentText className={classes.test}>Basic</DialogContentText>
-          <TextField autoFocus margin="dense" id="varchartype" label="varchartype" type="input" {...formik.getFieldProps('varchartype')} fullWidth />
-          <TextField autoFocus margin="dense" id="inttype" label="inttype" type="input" {...formik.getFieldProps('inttype')} fullWidth />
+          <TextField
+            margin="dense"
+            id="varchartype"
+            label="varchartype"
+            type="input"
+            {...formik.getFieldProps('varchartype')}
+            fullWidth
+          />
+          <TextField
+            margin="dense"
+            id="inttype"
+            label="inttype"
+            type="input"
+            {...formik.getFieldProps('inttype')}
+            fullWidth
+          />
         </DialogContent>
 
         <DialogContent>
           <DialogContentText className={classes.test}>Date</DialogContentText>
-          <TextField autoFocus margin="dense" id="yeartype" label="yeartype" type="input" {...formik.getFieldProps('yeartype')} fullWidth />
-          <TextField autoFocus margin="dense" id="datetype" label="datetype" type="input" {...formik.getFieldProps('datetype')} fullWidth />
-          <TextField autoFocus margin="dense" id="datetimetype" label="datetimetype" type="input" {...formik.getFieldProps('datetimetype')} fullWidth />
+          <TextField
+            margin="dense"
+            id="yeartype"
+            label="yeartype"
+            type="input"
+            {...formik.getFieldProps('yeartype')}
+            fullWidth
+          />
+          <TextField
+            margin="dense"
+            id="datetype"
+            label="datetype"
+            type="input"
+            {...formik.getFieldProps('datetype')}
+            fullWidth
+          />
+          <TextField
+            margin="dense"
+            id="datetimetype"
+            label="datetimetype"
+            type="input"
+            {...formik.getFieldProps('datetimetype')}
+            fullWidth
+          />
         </DialogContent>
 
         <DialogActions>

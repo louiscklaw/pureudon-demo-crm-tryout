@@ -2,10 +2,10 @@
 
 set -ex
 
+export BROWSER=none
+
 # rm -rf node_modules || true
 # rm -rf /tmp/metro-* || true
-
-npx browserslist@latest --update-db
 
 yarn --dev
 

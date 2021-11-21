@@ -6,7 +6,7 @@ import Toolbar from './Toolbar';
 
 import SampleData from './SampleData';
 
-import { API_ENDPOINT_BASE } from './config';
+import get from '../../../api/datatypes/get';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +26,7 @@ const CustomerListView = () => {
 
   const refreshData = () => {
     setIsLoading(true);
-    fetch(`${API_ENDPOINT_BASE}/datatypes`)
+    get()
       .then((res) => res.json())
       .then((res_json) => {
         console.log('SampleData', res_json.data);
