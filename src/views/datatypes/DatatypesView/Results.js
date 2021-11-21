@@ -23,6 +23,8 @@ import EditDatatype from './EditDataType';
 import ConfirmDeleteDialog from './ConfirmDeleteDialog';
 import { useTranslation } from 'react-i18next';
 
+import Loading from './Loading';
+
 const useStyles = makeStyles((theme) => ({
   root: {},
   avatar: { marginRight: theme.spacing(2) },
@@ -92,6 +94,19 @@ const Results = ({ filter_input, className, customers, is_loading, is_updating, 
   };
 
   let [snackbar_open, setSnackbarOpen] = React.useState(false);
+
+  if (is_loading)
+    return (
+      <div
+        style={{
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Loading />
+      </div>
+    );
 
   return (
     <>
