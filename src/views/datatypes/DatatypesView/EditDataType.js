@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default ({ open, setOpen, id_to_edit }) => {
+export default ({ open, setOpen, id_to_edit, refreshData }) => {
   const { t } = useTranslation();
   let [is_loading, setIsLoading] = React.useState(true);
   let [edit_content, setEditContent] = React.useState({});
@@ -62,6 +62,7 @@ export default ({ open, setOpen, id_to_edit }) => {
     // }),
     onSubmit: (values) => {
       putData(values)
+        .then(() => refreshData())
         .then(() => setOpen(false))
         .catch((err) => console.error('err', err.message));
     },

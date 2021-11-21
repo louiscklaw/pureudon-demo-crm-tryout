@@ -9,6 +9,6 @@ export default (data) => {
     headers: { 'Content-Type': 'application/json' },
     redirect: 'follow',
     referrerPolicy: 'no-referrer',
-    body: JSON.stringify({ hello: 'world' }),
+    body: JSON.stringify(data),
   });
 };
