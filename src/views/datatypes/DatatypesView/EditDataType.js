@@ -17,6 +17,7 @@ import { useFormik } from 'formik';
 import putData from '../../../api/datatypes/put';
 
 import { DATATYPES_ENDPOINT } from './config';
+import Loading from './Loading';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -68,8 +69,7 @@ export default ({ open, setOpen, id_to_edit }) => {
   if (is_loading)
     return (
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">helloworld dialog</DialogTitle>
-        Loading
+        <Loading />
       </Dialog>
     );
 
@@ -129,7 +129,7 @@ export default ({ open, setOpen, id_to_edit }) => {
         </DialogContent>
 
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button type="reset" onClick={handleClose} color="primary">
             Cancel
           </Button>
           <Button type="submit" color="primary">

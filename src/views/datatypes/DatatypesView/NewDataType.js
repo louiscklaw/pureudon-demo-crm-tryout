@@ -116,7 +116,7 @@ export default ({ open, setOpen, refreshData }) => {
           </DialogContent>
 
           <DialogActions>
-            <Button onClick={handleClose} color="primary">
+            <Button type="reset" onClick={handleClose} color="primary">
               Cancel
             </Button>
             <Button type="submit" color="primary">

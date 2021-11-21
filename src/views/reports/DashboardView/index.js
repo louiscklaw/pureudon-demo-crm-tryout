@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Grid, makeStyles } from '@material-ui/core';
 import Page from 'src/components/Page';
-import Budget from './Budget';
 import Datatypes from './Datatypes';
 import LatestOrders from './LatestOrders';
 import LatestProducts from './LatestProducts';
@@ -10,6 +9,9 @@ import TasksProgress from './TasksProgress';
 import TotalCustomers from './TotalCustomers';
 import TotalProfit from './TotalProfit';
 import TrafficByDevice from './TrafficByDevice';
+
+import Loading from './Loading';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,6 +24,17 @@ const useStyles = makeStyles((theme) => ({
 
 const Dashboard = () => {
   const classes = useStyles();
+
+  let [is_loading, setIsLoading] = React.useState(true);
+  let { t } = useTranslation();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 200);
+  }, []);
+
+  if (is_loading) return <Loading />;
 
   return (
     <Page className={classes.root} title="Dashboard">

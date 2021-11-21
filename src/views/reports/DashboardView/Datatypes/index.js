@@ -7,9 +7,11 @@ import MoneyIcon from '@material-ui/icons/Money';
 
 import useStyles from './styles';
 import get from 'src/api/datatypes/get';
+import { useTranslation } from 'react-i18next';
 
 const Budget = ({ className, ...rest }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   let [datatypes_length, setDatatypesLength] = React.useState(0);
 
@@ -25,7 +27,7 @@ const Budget = ({ className, ...rest }) => {
         <Grid container justify="space-between" spacing={3}>
           <Grid item>
             <Typography color="textSecondary" gutterBottom variant="h6">
-              Num of Datatypes
+              {t('num_of_datatypes')}
             </Typography>
             <Typography color="textPrimary" variant="h3">
               {JSON.stringify(datatypes_length)}
