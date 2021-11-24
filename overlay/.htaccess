@@ -16,4 +16,13 @@
     # https://gist.github.com/alexsasharegan/173878f9d67055bfef63449fa7136042
     RewriteRule . /demo/CRM-demo/index.html [L]
 
+    # <Limit GET POST PUT OPTIONS DELETE PATCH HEAD>
+    #     Order allow,deny
+    #     Allow from all
+    # </Limit>
+    # <LimitExcept GET POST PUT OPTIONS DELETE PATCH HEAD>
+    #     Order deny,allow
+    #     Deny from all
+    # </LimitExcept>
+
 </IfModule>

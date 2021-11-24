@@ -14,8 +14,6 @@ import {
   TableRow,
   makeStyles,
   Button,
-  Modal,
-  Fade,
 } from '@material-ui/core';
 
 import EditDatatype from './EditDataType';
@@ -93,8 +91,6 @@ const Results = ({ filter_input, className, customers, is_loading, is_updating, 
     setIdToEdit(id_to_edit);
   };
 
-  let [snackbar_open, setSnackbarOpen] = React.useState(false);
-
   if (is_loading)
     return (
       <div
@@ -110,19 +106,26 @@ const Results = ({ filter_input, className, customers, is_loading, is_updating, 
 
   return (
     <>
-      <EditDatatype
-        open={open_edit_modal}
-        setOpen={setOpenEditModal}
-        id_to_edit={id_to_edit}
-        refreshData={refreshData}
-      />
-      <ConfirmDeleteDialog
-        open={open_confirm_delete_dialog}
-        setOpen={setOpenConfirmDeleteDialog}
-        id_to_delete={id_to_delete}
-        refreshData={refreshData}
-        setSnackbarOpen={setSnackbarOpen}
-      />
+      {id_to_edit ? (
+        <EditDatatype
+          open={open_edit_modal}
+          setOpen={setOpenEditModal}
+          id_to_edit={id_to_edit}
+          refreshData={refreshData}
+        />
+      ) : (
+        <></>
+      )}
+      {id_to_delete ? (
+        <ConfirmDeleteDialog
+          open={open_confirm_delete_dialog}
+          setOpen={setOpenConfirmDeleteDialog}
+          id_to_delete={id_to_delete}
+          refreshData={refreshData}
+        />
+      ) : (
+        <></>
+      )}
       <Card className={clsx(classes.root, className)} {...rest}>
         <PerfectScrollbar>
           <Box minWidth={1050}>

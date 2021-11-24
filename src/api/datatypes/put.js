@@ -1,7 +1,7 @@
 import { DATATYPES_ENDPOINT } from '../config';
 
-export default (data) => {
-  return fetch(DATATYPES_ENDPOINT, {
+export default ({ id_to_edit, data }) => {
+  return fetch(`${DATATYPES_ENDPOINT}/${id_to_edit}`, {
     method: 'PUT',
     mode: 'cors',
     cache: 'no-cache',

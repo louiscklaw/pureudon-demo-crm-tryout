@@ -1,16 +1,13 @@
 import React from 'react';
-
-import { Dialog, Button, DialogTitle, DialogActions, DialogContent, DialogContentText } from '@material-ui/core';
-
 import { useSnackbar } from 'notistack';
-
-import useStyles from './styles';
+import { Dialog, Button, DialogTitle, DialogActions } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
+
 import ShowDebug from 'src/components/ShowDebug';
+
 import delete_datatypes from 'src/api/datatypes/delete';
 
-export default ({ open, setOpen, id_to_delete, refreshData, setSnackbarOpen }) => {
-  const classes = useStyles();
+export default ({ open, setOpen, id_to_delete, refreshData }) => {
   const { enqueueSnackbar } = useSnackbar();
 
   const notifyDeleteComplete = () => enqueueSnackbar(t('delete complete'), { variant: 'success' });

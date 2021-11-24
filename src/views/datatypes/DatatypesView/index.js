@@ -6,7 +6,7 @@ import Toolbar from './Toolbar';
 
 import SampleData from './SampleData';
 
-import get from '../../../api/datatypes/get';
+import get_all from '../../../api/datatypes/get_all';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,12 +22,11 @@ const CustomerListView = () => {
   const [sample_data, setSampleData] = useState();
 
   let [is_loading, setIsLoading] = useState(true);
-  let [is_updating, setIsUpdating] = useState(false);
   let [filter_input, setFilterInput] = useState('');
 
   const refreshData = () => {
     setIsLoading(true);
-    get()
+    get_all()
       .then((res) => res.json())
       .then((res_json) => {
         console.log('SampleData', res_json.data);

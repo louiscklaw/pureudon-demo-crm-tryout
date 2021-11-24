@@ -1,12 +1,12 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { Avatar, Box, Card, CardContent, Grid, Typography, colors, makeStyles } from '@material-ui/core';
+import { Avatar, Box, Card, CardContent, Grid, Typography } from '@material-ui/core';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import MoneyIcon from '@material-ui/icons/Money';
 
 import useStyles from './styles';
-import get from 'src/api/datatypes/get';
+import get_all from 'src/api/datatypes/get_all';
 import { useTranslation } from 'react-i18next';
 
 import Loading from './Loading';
@@ -19,7 +19,7 @@ const Budget = ({ className, ...rest }) => {
   let [is_loading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
-    get()
+    get_all()
       .then((res) => res.json())
       .then((res_json) => setDatatypesLength(res_json.data.length))
       .then(() => setIsLoading(false));
