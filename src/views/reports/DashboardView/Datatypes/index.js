@@ -9,21 +9,29 @@ import useStyles from './styles';
 import get_all from 'src/api/datatypes/get_all';
 import { useTranslation } from 'react-i18next';
 
+import useDatatypesCount from 'src/hooks/useDatatypesCount';
+
 import Loading from './Loading';
 
 const Budget = ({ className, ...rest }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
-  let [datatypes_length, setDatatypesLength] = React.useState(0);
+  let [datatypes_length, setDatatypesLength] = React.useState();
   let [is_loading, setIsLoading] = React.useState(true);
 
+  let { data } = useDatatypesCount();
+
   React.useEffect(() => {
-    get_all()
-      .then((res) => res.json())
-      .then((res_json) => setDatatypesLength(res_json.data.length))
-      .then(() => setIsLoading(false));
-  }, []);
+    if (datatypes_length) {
+    } else {
+      setIsLoading(false);
+    }
+  }, [datatypes_length]);
+
+  React.useEffect(() => {
+    setDatatypesLength(data?.total);
+  }, [data]);
 
   if (is_loading)
     return (
