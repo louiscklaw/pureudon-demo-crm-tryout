@@ -1,0 +1,533 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "varchartype": "put json",
+      "inttype": 141,
+      "yeartype": "2027",
+      "datetype": "2027-07-07",
+      "datetimetype": "2027-07-07 07:07:07"
+    },
+    {
+      "id": 2,
+      "varchartype": "varchar second",
+      "inttype": 2,
+      "yeartype": "2022",
+      "datetype": "2022-02-02",
+      "datetimetype": "2022-02-02 02:02:02"
+    },
+    {
+      "id": 3,
+      "varchartype": "varchar third",
+      "inttype": 4,
+      "yeartype": "2023",
+      "datetype": "2023-03-03",
+      "datetimetype": "2023-03-03 03:03:03"
+    },
+    {
+      "id": 4,
+      "varchartype": "fourth",
+      "inttype": 4,
+      "yeartype": "2024",
+      "datetype": "2024-04-04",
+      "datetimetype": "2024-04-04 04:04:04"
+    },
+    {
+      "id": 5,
+      "varchartype": "patch json",
+      "inttype": 14,
+      "yeartype": "2027",
+      "datetype": "2027-07-07",
+      "datetimetype": "2027-07-07 07:07:07"
+    },
+    {
+      "id": 7,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 8,
+      "varchartype": "patch json",
+      "inttype": 14,
+      "yeartype": "2027",
+      "datetype": "2027-07-07",
+      "datetimetype": "2027-07-07 07:07:07"
+    },
+    {
+      "id": 9,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 21,
+      "varchartype": "put json",
+      "inttype": 141,
+      "yeartype": "2027",
+      "datetype": "2027-07-07",
+      "datetimetype": "2027-07-07 07:07:07"
+    },
+    {
+      "id": 24,
+      "varchartype": "post form-data",
+      "inttype": 62,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 25,
+      "varchartype": "post query params",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 26,
+      "varchartype": "post query params",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 27,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 28,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 29,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 30,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 31,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 32,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 33,
+      "varchartype": "post query params",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 34,
+      "varchartype": "post query params",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 35,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 36,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 37,
+      "varchartype": "post query params",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 38,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 39,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 40,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 41,
+      "varchartype": "post query params",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 42,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 43,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 44,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 45,
+      "varchartype": "post query params",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 46,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 47,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 48,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 49,
+      "varchartype": "post query params",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 50,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 51,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 52,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 53,
+      "varchartype": "post query params",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 54,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 55,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 56,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 57,
+      "varchartype": "post query params",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 58,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 59,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 60,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 61,
+      "varchartype": "post query params",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 62,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 63,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 64,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 65,
+      "varchartype": "post query params",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 66,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 67,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 68,
+      "varchartype": "post form-data 109",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    { "id": 69, "varchartype": "1", "inttype": 2, "yeartype": "", "datetype": "", "datetimetype": null },
+    {
+      "id": 70,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 71,
+      "varchartype": "post query params",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 72,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 73,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 74,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 75,
+      "varchartype": "post query params",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 76,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 77,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 78,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 79,
+      "varchartype": "post query params",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 80,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 81,
+      "varchartype": "post form-data",
+      "inttype": 6,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
+    }
+  ]
+}
