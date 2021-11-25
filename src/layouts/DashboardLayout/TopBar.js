@@ -36,7 +36,6 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
         <RouterLink to="/">
           <Logo />
         </RouterLink>
-        <button onClick={handleClick}>helloworld</button>
         <Box flexGrow={1} />
         <Hidden mdDown>
           <ChangeLanguage />
