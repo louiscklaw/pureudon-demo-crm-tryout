@@ -10,5 +10,7 @@ export default {
     chinese: 'chinese',
     english: 'english',
     loading: 'loading...',
+    login: 'login',
+    logout: 'logout',
   },
 };

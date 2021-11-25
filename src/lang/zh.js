@@ -23,5 +23,7 @@ export default {
     'add datatypes complete': '新增 datatypes 完成',
     'add datatypes error': '新增 datatypes 失敗',
     'Create datatype': '新增 datatype',
+    login: '登入',
+    logout: '登出',
   },
 };

@@ -27,9 +27,6 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     marginRight: 'auto',
-    '&:first-letter': {
-      textTransform: 'capitalize',
-    },
   },
   active: {
     color: theme.palette.primary.main,
@@ -42,7 +39,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NavItem = ({ className, href, icon: Icon, title, ...rest }) => {
+const NavCollapse = ({
+  className,
+  href,
+  icon: Icon,
+  title,
+  open,
+  setOpen,
+  ...rest
+}) => {
   const classes = useStyles();
 
   return (
@@ -53,20 +58,20 @@ const NavItem = ({ className, href, icon: Icon, title, ...rest }) => {
       <Button
         activeClassName={classes.active}
         className={classes.button}
-        component={RouterLink}
-        to={href}>
+        onClick={(e) => setOpen(!open)}>
         {Icon && <Icon className={classes.icon} size="20" />}
         <span className={classes.title}>{title}</span>
+        {open ? <ExpandLess /> : <ExpandMore />}
       </Button>
     </ListItem>
   );
 };
 
-NavItem.propTypes = {
+NavCollapse.propTypes = {
   className: PropTypes.string,
   href: PropTypes.string,
   icon: PropTypes.elementType,
   title: PropTypes.string,
 };
 
-export default NavItem;
+export default NavCollapse;

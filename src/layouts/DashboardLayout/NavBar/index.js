@@ -1,94 +1,31 @@
 import React, { useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Avatar, Box, Button, Divider, Drawer, Hidden, List, Typography, makeStyles } from '@material-ui/core';
 import {
-  AlertCircle as AlertCircleIcon,
-  BarChart as BarChartIcon,
-  Lock as LockIcon,
-  Settings as SettingsIcon,
-  ShoppingBag as ShoppingBagIcon,
-  User as UserIcon,
-  UserPlus as UserPlusIcon,
-  Users as UsersIcon,
-} from 'react-feather';
+  Avatar,
+  Box,
+  Divider,
+  Drawer,
+  Hidden,
+  List,
+  Typography,
+} from '@material-ui/core';
+import { Lock as LockIcon } from 'react-feather';
 import NavItem from './NavItem';
 
-const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith',
-};
+import user from './data/user';
+import items from './data/items';
+
+import NavItemDigest from './NavItemDigest';
+import useStyles from './styles';
+import { useTranslation } from 'react-i18next';
 
 const ENV_PUBLIC_URL = process.env.PUBLIC_URL;
-
-const items = [
-  {
-    href: `${ENV_PUBLIC_URL}/app/datatyles`,
-    icon: BarChartIcon,
-    title: 'datatyles',
-  },
-  {
-    href: `${ENV_PUBLIC_URL}/app/dashboard`,
-    icon: BarChartIcon,
-    title: 'Dashboard',
-  },
-  // {
-  //   href: `${ENV_PUBLIC_URL}/app/customers`,
-  //   icon: UsersIcon,
-  //   title: "Customers",
-  // },
-  // {
-  //   href: `${ENV_PUBLIC_URL}/app/products`,
-  //   icon: ShoppingBagIcon,
-  //   title: "Products",
-  // },
-  // {
-  //   href: `${ENV_PUBLIC_URL}/app/account`,
-  //   icon: UserIcon,
-  //   title: "Account",
-  // },
-  // {
-  //   href: `${ENV_PUBLIC_URL}/app/settings`,
-  //   icon: SettingsIcon,
-  //   title: "Settings",
-  // },
-  {
-    href: `${ENV_PUBLIC_URL}/login`,
-    icon: LockIcon,
-    title: 'Login',
-  },
-  // {
-  //   href: `${ENV_PUBLIC_URL}/register`,
-  //   icon: UserPlusIcon,
-  //   title: "Register",
-  // },
-  // {
-  //   href: `${ENV_PUBLIC_URL}/404`,
-  //   icon: AlertCircleIcon,
-  //   title: "Error",
-  // },
-];
-
-const useStyles = makeStyles(() => ({
-  mobileDrawer: {
-    width: 256,
-  },
-  desktopDrawer: {
-    width: 256,
-    top: 64,
-    height: 'calc(100% - 64px)',
-  },
-  avatar: {
-    cursor: 'pointer',
-    width: 64,
-    height: 64,
-  },
-}));
 
 const NavBar = ({ onMobileClose, openMobile }) => {
   const classes = useStyles();
   const location = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (openMobile && onMobileClose) {
@@ -100,7 +37,12 @@ const NavBar = ({ onMobileClose, openMobile }) => {
   const content = (
     <Box height="100%" display="flex" flexDirection="column">
       <Box alignItems="center" display="flex" flexDirection="column" p={2}>
-        <Avatar className={classes.avatar} component={RouterLink} src={user.avatar} to="/app/account" />
+        <Avatar
+          className={classes.avatar}
+          component={RouterLink}
+          src={user.avatar}
+          to="/app/account"
+        />
         <Typography className={classes.name} color="textPrimary" variant="h5">
           {user.name}
         </Typography>
@@ -112,23 +54,20 @@ const NavBar = ({ onMobileClose, openMobile }) => {
       <Box p={2}>
         <List>
           {items.map((item) => (
-            <NavItem href={item.href} key={item.title} title={item.title} icon={item.icon} />
+            <NavItemDigest item={item} />
           ))}
         </List>
       </Box>
       <Box flexGrow={1} />
-      <Box p={2} m={2} bgcolor="background.dark">
-        <Typography align="center" gutterBottom variant="h4">
-          Need more?
-        </Typography>
-        <Typography align="center" variant="body2">
-          Upgrade to PRO version and access 20 more screens
-        </Typography>
-        <Box display="flex" justifyContent="center" mt={2}>
-          <Button color="primary" component="a" href="https://react-material-kit.devias.io" variant="contained">
-            See PRO version
-          </Button>
-        </Box>
+      <Box p={2}>
+        <List>
+          <NavItem
+            href={`${ENV_PUBLIC_URL}/logout`}
+            key={t('logout')}
+            title={t('logout')}
+            icon={LockIcon}
+          />
+        </List>
       </Box>
     </Box>
   );
@@ -146,7 +85,11 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         </Drawer>
       </Hidden>
       <Hidden lgDown>
-        <Drawer anchor="left" classes={{ paper: classes.desktopDrawer }} open variant="persistent">
+        <Drawer
+          anchor="left"
+          classes={{ paper: classes.desktopDrawer }}
+          open
+          variant="persistent">
           {content}
         </Drawer>
       </Hidden>
