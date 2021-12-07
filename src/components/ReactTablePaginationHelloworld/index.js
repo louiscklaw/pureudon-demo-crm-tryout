@@ -35,6 +35,17 @@ import useMutateDatatypes from 'src/hooks/useMutateDatatypes';
 
 import makeData from './makeData';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    margin: theme.spacing(6, 0, 3),
+  },
+  lightBulb: {
+    verticalAlign: 'middle',
+    marginRight: theme.spacing(1),
+  },
+  highlight_text: { backgroundColor: '#f9ca24', fontSize: '2rem' },
+}));
+
 const LOG_PREFIX = 'ReactTablePaginationHelloworld';
 
 function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) {
@@ -56,11 +67,6 @@ function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) 
     </span>
   );
 }
-
-const useStyles = makeStyles((theme) => ({
-  root: { margin: '1rem 0' },
-  avatar: { marginRight: theme.spacing(2) },
-}));
 
 // Define a custom filter filter function!
 function filterGreaterThan(rows, id, filterValue) {
@@ -285,7 +291,6 @@ function MuiTable({ columns, data, fetchData, loading, pageCount: controlledPage
         globalFilter={state.globalFilter}
         setGlobalFilter={setGlobalFilter}
       />
-      <pre>{JSON.stringify(state.globalFilter)}</pre>
       <Card className={clsx(classes.root)}>
         <PerfectScrollbar>
           <Table {...getTableProps()}>
@@ -320,7 +325,7 @@ function MuiTable({ columns, data, fetchData, loading, pageCount: controlledPage
                         <>
                           <TableCell {...cell.getCellProps()}>
                             <Highlighter
-                              highlightClassName="YourHighlightClass"
+                              highlightClassName={classes.highlight_text}
                               searchWords={[state.globalFilter]}
                               autoEscape={true}
                               textToHighlight={cell.value}
