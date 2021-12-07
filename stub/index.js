@@ -1,3 +1,6 @@
+const namor = require('namor');
+var faker = require('faker');
+
 const express = require('express');
 var cors = require('cors');
 
@@ -23,7 +26,60 @@ app.get('/jobbook-laravel/api/datatypes/list', (req, res) => {
 });
 
 app.get('/jobbook-laravel/api/datatypes', (req, res) => {
-  res.status(200).send(datatypes);
+  console.log('datatypes', 'req', req.query.genRecord);
+  if (req.query.genRecord) {
+    let data_array = Array(parseInt(req.query.genRecord))
+      .fill({})
+      .map((o, idx) => {
+        return {
+          id: idx,
+          hello: 'world',
+          varchartype: faker.name.findName(),
+          inttype: idx,
+          inttype1: Math.floor(Math.random() * 30),
+          inttype2: Math.floor(Math.random() * 100),
+          yeartype: faker.date.past().toDateString(),
+          datetype: faker.date.past(),
+          datetimetype: faker.date.past().setUTCFullYear(),
+        };
+      });
+
+    res.status(200).send({
+      data: [...data_array],
+      links: {
+        first: 'https://pureudon.com/demo/jobbook-laravel/api/datatypes?page=1',
+        last: 'https://pureudon.com/demo/jobbook-laravel/api/datatypes?page=7',
+        prev: null,
+        next: 'https://pureudon.com/demo/jobbook-laravel/api/datatypes?page=2',
+      },
+      meta: {
+        current_page: 1,
+        from: 1,
+        last_page: 7,
+        links: [
+          { url: null, label: '&laquo; Previous', active: false },
+          { url: 'https://pureudon.com/demo/jobbook-laravel/api/datatypes?page=1', label: '1', active: true },
+          { url: 'https://pureudon.com/demo/jobbook-laravel/api/datatypes?page=2', label: '2', active: false },
+          { url: 'https://pureudon.com/demo/jobbook-laravel/api/datatypes?page=3', label: '3', active: false },
+          { url: 'https://pureudon.com/demo/jobbook-laravel/api/datatypes?page=4', label: '4', active: false },
+          { url: 'https://pureudon.com/demo/jobbook-laravel/api/datatypes?page=5', label: '5', active: false },
+          { url: 'https://pureudon.com/demo/jobbook-laravel/api/datatypes?page=6', label: '6', active: false },
+          { url: 'https://pureudon.com/demo/jobbook-laravel/api/datatypes?page=7', label: '7', active: false },
+          {
+            url: 'https://pureudon.com/demo/jobbook-laravel/api/datatypes?page=2',
+            label: 'Next &raquo;',
+            active: false,
+          },
+        ],
+        path: 'https://pureudon.com/demo/jobbook-laravel/api/datatypes',
+        per_page: 10,
+        to: 10,
+        total: 67,
+      },
+    });
+  } else {
+    res.status(200).send(datatypes);
+  }
 });
 
 app.post('/jobbook-laravel/api/login', (req, res) => {

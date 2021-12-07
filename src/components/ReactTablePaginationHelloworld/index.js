@@ -18,6 +18,7 @@ import {
   TableRow,
   makeStyles,
   Button,
+  Input,
 } from '@material-ui/core';
 
 import useMutateDatatypes from 'src/hooks/useMutateDatatypes';
@@ -231,7 +232,7 @@ function MuiTable({ columns, data, fetchData, loading, pageCount: controlledPage
     {
       columns,
       data,
-      initialState: { pageIndex: 0 }, // Pass our hoisted table state
+      initialState: { pageIndex: 0, pageSize: 100 }, // Pass our hoisted table state
       manualPagination: true, // Tell the usePagination
       // hook that we'll handle our own data fetching
       // This means we'll also have to provide our own
@@ -325,19 +326,9 @@ function MuiTable({ columns, data, fetchData, loading, pageCount: controlledPage
           onRowsPerPageChange={handleLimitChange}
           page={state.pageIndex}
           rowsPerPage={state.pageSize}
-          rowsPerPageOptions={[10, 20]}
+          rowsPerPageOptions={[10, 50, 100, 500]}
         />
       </Card>
-
-      <pre>
-        <code>
-          {JSON.stringify(
-            { pageIndex: state.pageIndex, pageSize: state.pageSize, pageCount, canNextPage, canPreviousPage },
-            null,
-            2
-          )}
-        </code>
-      </pre>
     </>
   );
 }
@@ -405,8 +396,6 @@ function App() {
 
   return (
     <>
-      <pre>{JSON.stringify(data)}</pre>
-
       <MuiTable columns={columns} data={data} fetchData={fetchData} loading={loading} pageCount={pageCount} />
     </>
   );

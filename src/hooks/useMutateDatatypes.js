@@ -5,7 +5,7 @@ import { DATATYPES_ENDPOINT } from 'src/config';
 
 const useMutateDatatypes = () => {
   return useMutation(`mutateion-data-types`, async (pageIndex = 1, pageSize = 10) => {
-    return fetch(DATATYPES_ENDPOINT).then((res) => res.json());
+    return fetch(`${DATATYPES_ENDPOINT}?genRecord=999`).then((res) => res.json());
   });
 };
 
