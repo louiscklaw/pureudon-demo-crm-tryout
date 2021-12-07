@@ -31,7 +31,7 @@ function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) 
 
   return (
     <span>
-      Search:{' '}
+      Search:
       <input
         value={value || ''}
         onChange={(e) => {
