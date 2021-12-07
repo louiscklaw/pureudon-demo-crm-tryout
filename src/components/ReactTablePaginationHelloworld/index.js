@@ -4,6 +4,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import matchSorter from 'match-sorter';
 import Toolbar from './Toolbar';
 import IconButton from '@material-ui/core/IconButton';
+import Highlighter from 'react-highlight-words';
 
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import VolumeUp from '@material-ui/icons/VolumeUp';
@@ -33,6 +34,8 @@ import {
 import useMutateDatatypes from 'src/hooks/useMutateDatatypes';
 
 import makeData from './makeData';
+
+const LOG_PREFIX = 'ReactTablePaginationHelloworld';
 
 function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) {
   const count = preGlobalFilteredRows.length;
@@ -277,16 +280,12 @@ function MuiTable({ columns, data, fetchData, loading, pageCount: controlledPage
 
   return (
     <>
-      <GlobalFilter
-        preGlobalFilteredRows={preGlobalFilteredRows}
-        globalFilter={state.globalFilter}
-        setGlobalFilter={setGlobalFilter}
-      />
       <Toolbar
         preGlobalFilteredRows={preGlobalFilteredRows}
         globalFilter={state.globalFilter}
         setGlobalFilter={setGlobalFilter}
       />
+      <pre>{JSON.stringify(state.globalFilter)}</pre>
       <Card className={clsx(classes.root)}>
         <PerfectScrollbar>
           <Table {...getTableProps()}>
@@ -317,7 +316,18 @@ function MuiTable({ columns, data, fetchData, loading, pageCount: controlledPage
                 return (
                   <TableRow {...row.getRowProps()}>
                     {row.cells.map((cell) => {
-                      return <TableCell {...cell.getCellProps()}>{cell.render('Cell')}</TableCell>;
+                      return (
+                        <>
+                          <TableCell {...cell.getCellProps()}>
+                            <Highlighter
+                              highlightClassName="YourHighlightClass"
+                              searchWords={[state.globalFilter]}
+                              autoEscape={true}
+                              textToHighlight={cell.value}
+                            />
+                          </TableCell>
+                        </>
+                      );
                     })}
                   </TableRow>
                 );
