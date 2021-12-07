@@ -4,6 +4,8 @@
       "id": 1,
       "varchartype": "put json",
       "inttype": 141,
+      "inttype1": 141,
+      "inttype2": 141,
       "yeartype": "2027",
       "datetype": "2027-07-07",
       "datetimetype": "2027-07-07 07:07:07"
@@ -12,6 +14,8 @@
       "id": 2,
       "varchartype": "varchar second",
       "inttype": 2,
+      "inttype1": 2,
+      "inttype2": 2,
       "yeartype": "2022",
       "datetype": "2022-02-02",
       "datetimetype": "2022-02-02 02:02:02"
@@ -20,6 +24,8 @@
       "id": 3,
       "varchartype": "varchar third",
       "inttype": 4,
+      "inttype1": 4,
+      "inttype2": 4,
       "yeartype": "2023",
       "datetype": "2023-03-03",
       "datetimetype": "2023-03-03 03:03:03"
@@ -28,6 +34,8 @@
       "id": 4,
       "varchartype": "fourth",
       "inttype": 4,
+      "inttype1": 4,
+      "inttype2": 4,
       "yeartype": "2024",
       "datetype": "2024-04-04",
       "datetimetype": "2024-04-04 04:04:04"
@@ -36,6 +44,8 @@
       "id": 5,
       "varchartype": "patch json",
       "inttype": 14,
+      "inttype1": 14,
+      "inttype2": 14,
       "yeartype": "2027",
       "datetype": "2027-07-07",
       "datetimetype": "2027-07-07 07:07:07"
@@ -44,6 +54,8 @@
       "id": 7,
       "varchartype": "post form-data",
       "inttype": 6,
+      "inttype1": 6,
+      "inttype2": 6,
       "yeartype": "2026",
       "datetype": "2026-06-06",
       "datetimetype": "2026-06-06 06:06:06"
@@ -52,6 +64,8 @@
       "id": 8,
       "varchartype": "patch json",
       "inttype": 14,
+      "inttype1": 14,
+      "inttype2": 14,
       "yeartype": "2027",
       "datetype": "2027-07-07",
       "datetimetype": "2027-07-07 07:07:07"
@@ -60,6 +74,8 @@
       "id": 9,
       "varchartype": "post form-data",
       "inttype": 6,
+      "inttype1": 6,
+      "inttype2": 6,
       "yeartype": "2026",
       "datetype": "2026-06-06",
       "datetimetype": "2026-06-06 06:06:06"
@@ -68,6 +84,8 @@
       "id": 21,
       "varchartype": "put json",
       "inttype": 141,
+      "inttype1": 141,
+      "inttype2": 141,
       "yeartype": "2027",
       "datetype": "2027-07-07",
       "datetimetype": "2027-07-07 07:07:07"
@@ -76,6 +94,8 @@
       "id": 24,
       "varchartype": "post form-data",
       "inttype": 62,
+      "inttype1": 62,
+      "inttype2": 62,
       "yeartype": "2026",
       "datetype": "2026-06-06",
       "datetimetype": "2026-06-06 06:06:06"
@@ -84,6 +104,8 @@
       "id": 27,
       "varchartype": "post form-data",
       "inttype": 62,
+      "inttype1": 62,
+      "inttype2": 62,
       "yeartype": "2026",
       "datetype": "2026-06-06",
       "datetimetype": "2026-06-06 06:06:06"
