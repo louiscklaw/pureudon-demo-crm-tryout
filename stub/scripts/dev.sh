@@ -4,4 +4,4 @@ set -ex
 
 yarn
 
-node ./index.js
+nodemon ./index.js

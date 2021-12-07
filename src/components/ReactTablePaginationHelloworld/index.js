@@ -19,6 +19,8 @@ import {
   Button,
 } from '@material-ui/core';
 
+import useMutateDatatypes from 'src/hooks/useMutateDatatypes';
+
 import makeData from './makeData';
 
 const useStyles = makeStyles((theme) => ({
@@ -131,25 +133,19 @@ function MuiTable({ columns, data, fetchData, loading, pageCount: controlledPage
 }
 
 // Let's simulate a large dataset on the server (outside of our component)
-const serverData = makeData(12);
+// const serverData = makeData(12);
 
 function App() {
   const columns = React.useMemo(
     () => [
       {
-        Header: 'Name',
-        columns: [
-          { Header: 'First Name', accessor: 'firstName' },
-          { Header: 'Last Name', accessor: 'lastName' },
-        ],
-      },
-      {
         Header: 'Info',
         columns: [
-          { Header: 'Age', accessor: 'age' },
-          { Header: 'Visits', accessor: 'visits' },
-          { Header: 'Status', accessor: 'status' },
-          { Header: 'Profile Progress', accessor: 'progress' },
+          { Header: 'varchartype', accessor: 'varchartype' },
+          { Header: 'inttype', accessor: 'inttype' },
+          { Header: 'yeartype', accessor: 'yeartype' },
+          { Header: 'datetype', accessor: 'datetype' },
+          { Header: 'datetimetype', accessor: 'datetimetype' },
         ],
       },
     ],
@@ -162,35 +158,39 @@ function App() {
   const [pageCount, setPageCount] = React.useState(0);
   const fetchIdRef = React.useRef(0);
 
-  const fetchData = React.useCallback(({ pageSize, pageIndex }) => {
-    // This will get called when the table needs new data
-    // You could fetch your data from literally anywhere,
-    // even a server. But for this example, we'll just fake it.
+  let use_mutate_datatypes = useMutateDatatypes();
 
+  const fetchData = React.useCallback(({ pageSize, pageIndex }) => {
     // Give this fetch an ID
     const fetchId = ++fetchIdRef.current;
 
     // Set the loading state
     setLoading(true);
 
-    // We'll even set a delay to simulate a server here
-    setTimeout(() => {
-      // Only update the data if this is the latest fetch
-      if (fetchId === fetchIdRef.current) {
-        const startRow = pageSize * pageIndex;
-        const endRow = startRow + pageSize;
-        setData(serverData.slice(startRow, endRow));
+    use_mutate_datatypes
+      .mutateAsync(({ pageSize, pageIndex }) => {})
+      .then((res) => {
+        let serverData = res.data;
+        if (fetchId === fetchIdRef.current) {
+          const startRow = pageSize * pageIndex;
+          const endRow = startRow + pageSize;
+          setData(serverData.slice(startRow, endRow));
 
-        // Your server could send back total page count.
-        // For now we'll just fake it, too
-        setPageCount(Math.ceil(serverData.length / pageSize));
+          // Your server could send back total page count.
+          // For now we'll just fake it, too
+          setPageCount(Math.ceil(serverData.length / pageSize));
 
-        setLoading(false);
-      }
-    }, 100);
+          setLoading(false);
+        }
+      });
   }, []);
 
-  return <MuiTable columns={columns} data={data} fetchData={fetchData} loading={loading} pageCount={pageCount} />;
+  return (
+    <>
+      <pre>{JSON.stringify(data)}</pre>
+      <MuiTable columns={columns} data={data} fetchData={fetchData} loading={loading} pageCount={pageCount} />
+    </>
+  );
 }
 
 export default App;

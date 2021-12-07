@@ -79,6 +79,14 @@
       "yeartype": "2026",
       "datetype": "2026-06-06",
       "datetimetype": "2026-06-06 06:06:06"
+    },
+    {
+      "id": 27,
+      "varchartype": "post form-data",
+      "inttype": 62,
+      "yeartype": "2026",
+      "datetype": "2026-06-06",
+      "datetimetype": "2026-06-06 06:06:06"
     }
   ],
   "links": {

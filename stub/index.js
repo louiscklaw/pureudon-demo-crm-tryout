@@ -14,6 +14,10 @@ app.get('/jobbook-laravel/api/datatypes/count', (req, res) => {
   res.status(200).send(datatypes_count);
 });
 
+app.get('/jobbook-laravel/api/datatypes/search', (req, res) => {
+  res.status(200).send(datatypes_count);
+});
+
 app.get('/jobbook-laravel/api/datatypes/list', (req, res) => {
   res.status(200).send(datatypes_list);
 });
