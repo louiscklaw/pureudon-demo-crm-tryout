@@ -3,6 +3,11 @@ import clsx from 'clsx';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import matchSorter from 'match-sorter';
 import Toolbar from './Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import VolumeUp from '@material-ui/icons/VolumeUp';
+import ClearIcon from '@material-ui/icons/Clear';
 
 import { useTable, usePagination, useFilters, useGlobalFilter, useAsyncDebounce } from 'react-table';
 
@@ -19,6 +24,10 @@ import {
   makeStyles,
   Button,
   Input,
+  Slider,
+  Grid,
+  Select,
+  MenuItem,
 } from '@material-ui/core';
 
 import useMutateDatatypes from 'src/hooks/useMutateDatatypes';
@@ -33,14 +42,13 @@ function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) 
   return (
     <span>
       Search:
-      <input
+      <Input
         value={value || ''}
         onChange={(e) => {
           setValue(e.target.value);
           onChange(e.target.value);
         }}
         placeholder={`${count} records...`}
-        style={{ fontSize: '1.1rem', border: '0' }}
       />
     </span>
   );
@@ -69,21 +77,23 @@ function SelectColumnFilter({ column: { filterValue, setFilter, preFilteredRows,
     });
     return [...options.values()];
   }, [id, preFilteredRows]);
+  const [age, setAge] = React.useState('');
+  const handleChange = (e) => {
+    setFilter(e.target.value || undefined);
+  };
 
   // Render a multi-select box
   return (
-    <select
-      value={filterValue}
-      onChange={(e) => {
-        setFilter(e.target.value || undefined);
-      }}>
-      <option value="">All</option>
-      {options.map((option, i) => (
-        <option key={i} value={option}>
-          {option}
-        </option>
-      ))}
-    </select>
+    <>
+      <Select labelId="demo-simple-select-label" id="demo-simple-select" value={filterValue} onChange={handleChange}>
+        {options.map((option, i) => (
+          <MenuItem value={option}>{option}</MenuItem>
+        ))}
+      </Select>
+      <IconButton aria-label="clear" size="small" onClick={() => setFilter(undefined)}>
+        <ClearIcon fontSize="inherit" />
+      </IconButton>
+    </>
   );
 }
 
@@ -99,11 +109,8 @@ function NumberRangeColumnFilter({ column: { filterValue = [], preFilteredRows, 
   }, [id, preFilteredRows]);
 
   return (
-    <div
-      style={{
-        display: 'flex',
-      }}>
-      <input
+    <div style={{ display: 'flex' }}>
+      <Input
         value={filterValue[0] || ''}
         type="number"
         onChange={(e) => {
@@ -114,7 +121,7 @@ function NumberRangeColumnFilter({ column: { filterValue = [], preFilteredRows, 
         style={{ width: '70px', marginRight: '0.5rem' }}
       />
       to
-      <input
+      <Input
         value={filterValue[1] || ''}
         type="number"
         onChange={(e) => {
@@ -139,18 +146,18 @@ function SliderColumnFilter({ column: { filterValue, setFilter, preFilteredRows,
     return [min, max];
   }, [id, preFilteredRows]);
 
+  const [value, setValue] = React.useState(30);
+  const handleChange = (event, newValue) => {
+    setFilter(parseInt(newValue, 10));
+  };
+
   return (
     <>
-      <input
-        type="range"
-        min={min}
-        max={max}
-        value={filterValue || min}
-        onChange={(e) => {
-          setFilter(parseInt(e.target.value, 10));
-        }}
-      />
-      <button onClick={() => setFilter(undefined)}>Off</button>
+      <Slider value={filterValue || min} onChange={handleChange} aria-labelledby="continuous-slider" />
+      {/* <Button onClick={() => setFilter(undefined)}>Off</Button> */}
+      <IconButton aria-label="clear" size="small" onClick={() => setFilter(undefined)}>
+        <ClearIcon fontSize="inherit" />
+      </IconButton>
     </>
   );
 }
@@ -159,7 +166,7 @@ function DefaultColumnFilter({ column: { filterValue, preFilteredRows, setFilter
   const count = preFilteredRows.length;
 
   return (
-    <input
+    <Input
       value={filterValue || ''}
       onChange={(e) => {
         setFilter(e.target.value || undefined); // Set undefined to remove the filter entirely
@@ -232,7 +239,7 @@ function MuiTable({ columns, data, fetchData, loading, pageCount: controlledPage
     {
       columns,
       data,
-      initialState: { pageIndex: 0, pageSize: 100 }, // Pass our hoisted table state
+      initialState: { pageIndex: 0, pageSize: 50 }, // Pass our hoisted table state
       manualPagination: true, // Tell the usePagination
       // hook that we'll handle our own data fetching
       // This means we'll also have to provide our own
@@ -288,8 +295,8 @@ function MuiTable({ columns, data, fetchData, loading, pageCount: controlledPage
                 <TableRow {...headerGroup.getHeaderGroupProps()}>
                   {headerGroup.headers.map((column) => (
                     <TableCell {...column.getHeaderProps()}>
-                      {column.render('Header')}
-                      <div>{column.canFilter ? column.render('Filter') : null}</div>
+                      <Box>{column.render('Header')}</Box>
+                      <Box>{column.canFilter ? column.render('Filter') : null}</Box>
                     </TableCell>
                   ))}
                 </TableRow>
