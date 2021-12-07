@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import matchSorter from 'match-sorter';
+import Toolbar from './Toolbar';
 
 import { useTable, usePagination, useFilters, useGlobalFilter, useAsyncDebounce } from 'react-table';
 
@@ -22,6 +23,27 @@ import {
 import useMutateDatatypes from 'src/hooks/useMutateDatatypes';
 
 import makeData from './makeData';
+
+function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) {
+  const count = preGlobalFilteredRows.length;
+  const [value, setValue] = React.useState(globalFilter);
+  const onChange = useAsyncDebounce((value) => setGlobalFilter(value || undefined), 200);
+
+  return (
+    <span>
+      Search:{' '}
+      <input
+        value={value || ''}
+        onChange={(e) => {
+          setValue(e.target.value);
+          onChange(e.target.value);
+        }}
+        placeholder={`${count} records...`}
+        style={{ fontSize: '1.1rem', border: '0' }}
+      />
+    </span>
+  );
+}
 
 const useStyles = makeStyles((theme) => ({
   root: { margin: '1rem 0' },
@@ -146,30 +168,6 @@ function DefaultColumnFilter({ column: { filterValue, preFilteredRows, setFilter
   );
 }
 
-function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) {
-  const count = preGlobalFilteredRows.length;
-  const [value, setValue] = React.useState(globalFilter);
-  const onChange = useAsyncDebounce((value) => setGlobalFilter(value || undefined), 200);
-
-  return (
-    <span>
-      Search:{' '}
-      <input
-        value={value || ''}
-        onChange={(e) => {
-          setValue(e.target.value);
-          onChange(e.target.value);
-        }}
-        placeholder={`${count} records...`}
-        style={{
-          fontSize: '1.1rem',
-          border: '0',
-        }}
-      />
-    </span>
-  );
-}
-
 function fuzzyTextFilterFn(rows, id, filterValue) {
   return matchSorter(rows, filterValue, { keys: [(row) => row.values[id]] });
 }
@@ -271,6 +269,16 @@ function MuiTable({ columns, data, fetchData, loading, pageCount: controlledPage
 
   return (
     <>
+      <GlobalFilter
+        preGlobalFilteredRows={preGlobalFilteredRows}
+        globalFilter={state.globalFilter}
+        setGlobalFilter={setGlobalFilter}
+      />
+      <Toolbar
+        preGlobalFilteredRows={preGlobalFilteredRows}
+        globalFilter={state.globalFilter}
+        setGlobalFilter={setGlobalFilter}
+      />
       <Card className={clsx(classes.root)}>
         <PerfectScrollbar>
           <Table {...getTableProps()}>
@@ -387,9 +395,18 @@ function App() {
     });
   }, []);
 
+  let [filter_input, setFilterInput] = useState('');
+  let [is_loading, setIsLoading] = useState(true);
+  const [sample_data, setSampleData] = useState();
+
+  const refreshData = () => {
+    setIsLoading(true);
+  };
+
   return (
     <>
       <pre>{JSON.stringify(data)}</pre>
+
       <MuiTable columns={columns} data={data} fetchData={fetchData} loading={loading} pageCount={pageCount} />
     </>
   );
