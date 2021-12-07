@@ -7,6 +7,7 @@ import Toolbar from './Toolbar';
 import SampleData from './SampleData';
 
 import get_all from '../../../api/datatypes/get_all';
+import ReactTablePaginationHelloworld from 'src/components/ReactTablePaginationHelloworld';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,12 +42,13 @@ const CustomerListView = () => {
         <Toolbar refreshData={refreshData} setFilterInput={setFilterInput} />
         <Box mt={3}>
           <SampleData setData={setSampleData} setIsLoading={setIsLoading} />
-          <Results
+          {/* <Results
             filter_input={filter_input}
             customers={sample_data}
             is_loading={is_loading}
             refreshData={refreshData}
-          />
+          /> */}
+          <ReactTablePaginationHelloworld />
         </Box>
       </Container>
     </Page>
