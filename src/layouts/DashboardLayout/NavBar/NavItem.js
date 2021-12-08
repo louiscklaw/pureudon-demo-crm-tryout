@@ -22,23 +22,15 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'none',
     width: '100%',
   },
-  icon: {
-    marginRight: theme.spacing(1),
-  },
+  icon: { marginRight: theme.spacing(1) },
   title: {
     marginRight: 'auto',
-    '&:first-letter': {
-      textTransform: 'capitalize',
-    },
+    '&:first-letter': { textTransform: 'capitalize' },
   },
   active: {
     color: theme.palette.primary.main,
-    '& $title': {
-      fontWeight: theme.typography.fontWeightMedium,
-    },
-    '& $icon': {
-      color: theme.palette.primary.main,
-    },
+    '& $title': { fontWeight: theme.typography.fontWeightMedium },
+    '& $icon': { color: theme.palette.primary.main },
   },
 }));
 
@@ -46,15 +38,8 @@ const NavItem = ({ className, href, icon: Icon, title, ...rest }) => {
   const classes = useStyles();
 
   return (
-    <ListItem
-      className={clsx(classes.item, className)}
-      disableGutters
-      {...rest}>
-      <Button
-        activeClassName={classes.active}
-        className={classes.button}
-        component={RouterLink}
-        to={href}>
+    <ListItem className={clsx(classes.item, className)} disableGutters {...rest}>
+      <Button activeClassName={classes.active} className={classes.button} component={RouterLink} to={href}>
         {Icon && <Icon className={classes.icon} size="20" />}
         <span className={classes.title}>{title}</span>
       </Button>

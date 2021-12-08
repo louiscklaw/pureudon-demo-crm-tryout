@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     verticalAlign: 'middle',
     marginRight: theme.spacing(1),
   },
-  highlight_text: { backgroundColor: '#f9ca24', fontSize: '2rem' },
+  highlight_text: { backgroundColor: '#f1c40f', fontSize: '2rem' },
 }));
 
 const LOG_PREFIX = 'ReactTablePaginationHelloworld';

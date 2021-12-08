@@ -4,10 +4,12 @@ import { Navigate } from 'react-router-dom';
 import DashboardLayout from 'src/layouts/DashboardLayout';
 import AccountView from 'src/views/account/AccountView';
 import DatatypesView from 'src/views/datatypes/DatatypesView';
+import DatatypesViewOld from 'src/views/datatypes/DatatypesViewOld';
 import CustomerListView from 'src/views/customer/CustomerListView';
 import DashboardView from 'src/views/reports/DashboardView';
 import ProductListView from 'src/views/product/ProductListView';
 import SettingsView from 'src/views/settings/SettingsView';
+import HelloworldView from 'src/views/helloworld/HelloworldView';
 
 import MainLayout from 'src/layouts/MainLayout';
 import LoginView from 'src/views/auth/LoginView';
@@ -23,11 +25,13 @@ const routes = [
     element: <DashboardLayout />,
     children: [
       { path: 'datatyles', element: <DatatypesView /> },
+      { path: 'datatyles_old', element: <DatatypesViewOld /> },
       { path: 'account', element: <AccountView /> },
       { path: 'customers', element: <CustomerListView /> },
       { path: 'dashboard', element: <DashboardView /> },
       { path: 'products', element: <ProductListView /> },
       { path: 'settings', element: <SettingsView /> },
+      { path: 'helloworld', element: <HelloworldView /> },
       { path: '*', element: <Navigate to={`${ENV_PUBLIC_URL}/404`} /> },
     ],
   },
