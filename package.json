@@ -43,7 +43,7 @@
     "lodash": "^4.17.19",
     "match-sorter": "4.0.0",
     "material-ui-popup-state": "^1.9.3",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "namor": "^2.0.3",
     "notistack": "^1.0.10",
     "nprogress": "^0.2.0",
